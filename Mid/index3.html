@@ -99,6 +99,47 @@
             border: 1px solid #ddd;
             border-radius: 10px;
         }
+
+        /* Dark Mode */
+
+body.dark{
+    background:#121212;
+    color:white;
+}
+
+body.dark header{
+    background:#111;
+}
+
+body.dark section{
+    background:#1f1f1f;
+    color:white;
+}
+
+body.dark input,
+body.dark textarea{
+    background:#333;
+    color:white;
+    border:1px solid #666;
+}
+
+body.dark button{
+    background:#555;
+}
+
+body.dark button:hover{
+    background:#777;
+}
+
+body.dark .card{
+    background:#2b2b2b;
+    border:1px solid #555;
+}
+
+
+
+
+
     </style>
 </head>
 
@@ -237,6 +278,17 @@ const successPhone = document.getElementById("successPhone");
 const successAge = document.getElementById("successAge");
 const successMessage = document.getElementById("successMessage");
 
+const themeToggle = document.getElementById("themeToggle");
+const greeting = document.getElementById("greeting");
+
+
+
+themeToggle.addEventListener("click", function(){
+
+    document.body.classList.toggle("dark");
+
+});
+
 function showError(element, message) {
     element.textContent = message;
 }
@@ -346,6 +398,34 @@ function validateAge() {
     return true;
 }
 
+
+
+function updateGreeting(){
+
+    const hour = new Date().getHours();
+
+    if(hour < 12){
+
+        greeting.textContent = "Good Morning";
+
+    }
+
+    else if(hour < 18){
+
+        greeting.textContent = "Good Afternoon";
+
+    }
+
+    else{
+
+        greeting.textContent = "Good Evening";
+
+    }
+
+}
+
+
+
 // Message Validation
 function validateMessage() {
 
@@ -415,6 +495,7 @@ form.addEventListener("submit", function (e) {
 
 });
 
+updateGreeting();
 
 </script>
 
