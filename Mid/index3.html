@@ -229,6 +229,14 @@ const passwordError = document.getElementById("passwordError");
 const ageError = document.getElementById("ageError");
 const messageError = document.getElementById("messageError");
 
+const successBox = document.getElementById("successBox");
+
+const successName = document.getElementById("successName");
+const successEmail = document.getElementById("successEmail");
+const successPhone = document.getElementById("successPhone");
+const successAge = document.getElementById("successAge");
+const successMessage = document.getElementById("successMessage");
+
 function showError(element, message) {
     element.textContent = message;
 }
@@ -368,7 +376,7 @@ messageInput.addEventListener("input", validateMessage);
 
 // Form Submit
 
-form.addEventListener("submit", function(e) {
+form.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
@@ -387,7 +395,22 @@ form.addEventListener("submit", function(e) {
         validAge &&
         validMessage
     ) {
-        alert("All validations passed.");
+
+        successName.textContent = nameInput.value;
+        successEmail.textContent = emailInput.value;
+        successPhone.textContent = phoneInput.value;
+        successAge.textContent = ageInput.value;
+        successMessage.textContent = messageInput.value;
+
+        successBox.style.display = "block";
+
+        form.reset();
+
+    }
+    else {
+
+        successBox.style.display = "none";
+
     }
 
 });
