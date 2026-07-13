@@ -229,16 +229,169 @@ const passwordError = document.getElementById("passwordError");
 const ageError = document.getElementById("ageError");
 const messageError = document.getElementById("messageError");
 
-const successBox = document.getElementById("successBox");
+function showError(element, message) {
+    element.textContent = message;
+}
 
-const successName = document.getElementById("successName");
-const successEmail = document.getElementById("successEmail");
-const successPhone = document.getElementById("successPhone");
-const successAge = document.getElementById("successAge");
-const successMessage = document.getElementById("successMessage");
+function clearError(element) {
+    element.textContent = "";
+}
 
-const themeToggle = document.getElementById("themeToggle");
-const greeting = document.getElementById("greeting");
+// Name Validation
+function validateName() {
+
+    const value = nameInput.value.trim();
+    const regex = /^[A-Za-z ]{3,}$/;
+
+    if (value === "") {
+        showError(nameError, "Name is required.");
+        return false;
+    }
+
+    if (!regex.test(value)) {
+        showError(nameError, "Only letters and spaces (minimum 3 characters).");
+        return false;
+    }
+
+    clearError(nameError);
+    return true;
+}
+
+// Email Validation
+function validateEmail() {
+
+    const value = emailInput.value.trim();
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (value === "") {
+        showError(emailError, "Email is required.");
+        return false;
+    }
+
+    if (!regex.test(value)) {
+        showError(emailError, "Enter a valid email.");
+        return false;
+    }
+
+    clearError(emailError);
+    return true;
+}
+
+// Phone Validation
+function validatePhone() {
+
+    const value = phoneInput.value.trim();
+
+    if (value === "") {
+        showError(phoneError, "Phone number is required.");
+        return false;
+    }
+
+    if (!/^\d{10}$/.test(value)) {
+        showError(phoneError, "Phone number must be exactly 10 digits.");
+        return false;
+    }
+
+    clearError(phoneError);
+    return true;
+}
+
+// Password Validation
+function validatePassword() {
+
+    const value = passwordInput.value;
+
+    const regex =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+
+    if (value === "") {
+        showError(passwordError, "Password is required.");
+        return false;
+    }
+
+    if (!regex.test(value)) {
+        showError(passwordError,
+            "Minimum 8 characters with uppercase, lowercase, number and special character.");
+        return false;
+    }
+
+    clearError(passwordError);
+    return true;
+}
+
+// Age Validation
+function validateAge() {
+
+    const value = Number(ageInput.value);
+
+    if (ageInput.value === "") {
+        showError(ageError, "Age is required.");
+        return false;
+    }
+
+    if (value < 18) {
+        showError(ageError, "Age must be at least 18.");
+        return false;
+    }
+
+    clearError(ageError);
+    return true;
+}
+
+// Message Validation
+function validateMessage() {
+
+    const value = messageInput.value.trim();
+
+    if (value === "") {
+        showError(messageError, "Message is required.");
+        return false;
+    }
+
+    if (value.length < 10) {
+        showError(messageError, "Message must be at least 10 characters.");
+        return false;
+    }
+
+    clearError(messageError);
+    return true;
+}
+
+// Remove errors while typing
+
+nameInput.addEventListener("input", validateName);
+emailInput.addEventListener("input", validateEmail);
+phoneInput.addEventListener("input", validatePhone);
+passwordInput.addEventListener("input", validatePassword);
+ageInput.addEventListener("input", validateAge);
+messageInput.addEventListener("input", validateMessage);
+
+// Form Submit
+
+form.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const validName = validateName();
+    const validEmail = validateEmail();
+    const validPhone = validatePhone();
+    const validPassword = validatePassword();
+    const validAge = validateAge();
+    const validMessage = validateMessage();
+
+    if (
+        validName &&
+        validEmail &&
+        validPhone &&
+        validPassword &&
+        validAge &&
+        validMessage
+    ) {
+        alert("All validations passed.");
+    }
+
+});
+
 
 </script>
 
