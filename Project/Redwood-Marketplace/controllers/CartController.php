@@ -200,5 +200,5 @@ public function removeFromCart()
     require "views/customer/cart.php";
 }
 }
-
+// Validate user login credentialsd
 ?>
