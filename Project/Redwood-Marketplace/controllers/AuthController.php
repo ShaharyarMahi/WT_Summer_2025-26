@@ -154,5 +154,6 @@ public function logout()
     exit;
 }
 }
+// Validate user login credentials
 
 ?>
