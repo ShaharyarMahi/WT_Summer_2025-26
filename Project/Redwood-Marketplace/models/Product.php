@@ -8,7 +8,7 @@ class Product
     {
         $this->conn = $conn;
     }
-
+//fahim
     public function getAllProducts()
     {
         $sql = "SELECT
