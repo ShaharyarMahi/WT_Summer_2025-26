@@ -9,6 +9,7 @@ function requireLogin()
         exit;
     }
 }
+// Validate user login credentials
 
 function requireRole($role)
 {
