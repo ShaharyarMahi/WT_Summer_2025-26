@@ -11,7 +11,15 @@ class ProductController
         $this->productModel = new Product($conn);
     }
 
-    public function index()
+   
+
+
+
+
+
+
+
+     public function index()
     {
         $products = $this->productModel->getAllProducts();
 
