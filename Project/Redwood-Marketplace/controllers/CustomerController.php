@@ -92,6 +92,8 @@ class CustomerController
 
         require "views/customer/dashboard.php";
     }
+
 }
+// Validate user login credentials
 
 ?>
