@@ -80,6 +80,8 @@ class Cart
             $productId
         );
 
+        
+        
         $stmt->execute();
 
         $result = $stmt->get_result();
