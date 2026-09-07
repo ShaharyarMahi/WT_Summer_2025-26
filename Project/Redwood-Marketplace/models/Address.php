@@ -10,11 +10,6 @@ class Address
     }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Get all addresses of a user
-    |--------------------------------------------------------------------------
-    */
 
     public function getAddressesByUser($userId)
     {
@@ -46,12 +41,6 @@ class Address
         return $stmt->get_result();
     }
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | Get one address
-    |--------------------------------------------------------------------------
-    */
 
     public function getAddressById(
         $addressId,
@@ -93,11 +82,6 @@ class Address
     }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Add address
-    |--------------------------------------------------------------------------
-    */
 
     public function addAddress(
         $userId,
@@ -110,10 +94,7 @@ class Address
         $country,
         $isDefault
     ) {
-        /*
-        If this is the first address,
-        make it default automatically.
-        */
+       
 
         $checkSql =
             "SELECT COUNT(*) AS total
@@ -139,10 +120,7 @@ class Address
         }
 
 
-        /*
-        If user wants this address as default,
-        remove default from existing addresses.
-        */
+      
 
         if ($isDefault == 1) {
 
@@ -186,11 +164,7 @@ class Address
     }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Update address
-    |--------------------------------------------------------------------------
-    */
+    
 
     public function updateAddress(
         $addressId,
@@ -247,11 +221,7 @@ class Address
     }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Remove default from user's addresses
-    |--------------------------------------------------------------------------
-    */
+   
 
     private function removeDefault($userId)
     {
